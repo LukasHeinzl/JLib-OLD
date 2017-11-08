@@ -34,6 +34,11 @@ public class Statement{
 		return tokens;
 	}
 
+	@Override
+	public String toString(){
+		return tokens.toString();
+	}
+
 	/**
 	 * This method takes a list of tokens, groups them and returns a list of statements.
 	 * 
