@@ -33,7 +33,7 @@ public class JavaFormatter implements LanguageFormatter{
 	 */
 	enum JavaTokenType implements TokenType{
 
-		KEYWORD, STRING, CHAR, LINE_CMT, BLOCK_CMT, DOC_CMT, ESCAPE_CHAR, CMT_END;
+		KEYWORD, IDENTIFIER, STRING, CHAR, LINE_CMT, BLOCK_CMT, DOC_CMT, ESCAPE_CHAR, CMT_END;
 
 	}
 
@@ -121,7 +121,7 @@ public class JavaFormatter implements LanguageFormatter{
 		for(String ec: new String[]{ "\\\\t", "\\\\b", "\\\\n", "\\\\r", "\\\\f", "\\\\'", "\\\\\"", "\\\\\\\\"}){
 			DATA.add(new TokenData(Pattern.compile("^(" + ec + ")"), JavaTokenType.ESCAPE_CHAR));
 		}
-
+		
 		// string and char
 		DATA.add(new TokenData(Pattern.compile("^(\")"), JavaTokenType.STRING));
 		DATA.add(new TokenData(Pattern.compile("^(')"), JavaTokenType.CHAR));
@@ -132,6 +132,8 @@ public class JavaFormatter implements LanguageFormatter{
 		DATA.add(new TokenData(Pattern.compile("^(/\\*)"), JavaTokenType.BLOCK_CMT));
 		DATA.add(new TokenData(Pattern.compile("^(\\*/)"), JavaTokenType.CMT_END));
 
+		DATA.add(new TokenData(Pattern.compile("^([$_a-zA-Z][$_a-zA-Z0-9]*)"), JavaTokenType.IDENTIFIER));
+		
 		// any other character and space / tab / new line
 		DATA.add(TokenData.getNewLineData());
 		DATA.add(TokenData.getTabData());

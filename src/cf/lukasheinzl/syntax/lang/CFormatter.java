@@ -33,7 +33,7 @@ public class CFormatter implements LanguageFormatter{
 	 */
 	enum CTokenType implements TokenType{
 
-		KEYWORD, STRING, CHAR, LINE_CMT, BLOCK_CMT, ESCAPE_CHAR, CMT_END, PREPRO;
+		KEYWORD, IDENTIFIER, STRING, CHAR, LINE_CMT, BLOCK_CMT, ESCAPE_CHAR, CMT_END, PREPRO;
 
 	}
 
@@ -112,6 +112,8 @@ public class CFormatter implements LanguageFormatter{
 		// preprocessor
 		DATA.add(new TokenData(Pattern.compile("^(#)"), CTokenType.PREPRO));
 
+		DATA.add(new TokenData(Pattern.compile("^([_a-zA-Z][_a-zA-Z0-9]*)"), CTokenType.IDENTIFIER));
+		
 		// any other character and space / tab / new line
 		DATA.add(TokenData.getNewLineData());
 		DATA.add(TokenData.getTabData());
