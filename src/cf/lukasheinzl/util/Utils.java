@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 import javax.tools.JavaCompiler;
@@ -165,6 +166,38 @@ public class Utils{
 
 			return sb.toString();
 		}
+	}
+
+	/**
+	 * This method can be used to perform complex switch/case statements.
+	 * 
+	 * @param <T>
+	 *            This is the type of the value to 'switch'
+	 * @param <U>
+	 *            This is the type of the value(s) to compare to ('case')
+	 * @param <R>
+	 *            This is the type if the value this 'switch' statement returns
+	 * @param input
+	 *            The value to 'switch'
+	 * @param compare
+	 *            The function to use for comparison
+	 * @return The value that results from any match or an IllegalArgumentException if no case compares to true
+	 */
+	public static <T, U extends T, R> SwitchNode<T, U, R> switchComplex(T input, BiFunction<T, U, Boolean> compare){
+		return new SwitchNode<>(null, input, compare);
+	}
+
+	/**
+	 * This method can be used to compare strings with regular expressions using a switch/case-like structure.
+	 * 
+	 * @param <R>
+	 *            This is the type if the value this 'switch' statement returns
+	 * @param input
+	 *            The value to 'switch'
+	 * @return The value that results from any match or an IllegalArgumentException if no case compares to true
+	 */
+	public static <R> SwitchNode<String, String, R> switchRegex(String input){
+		return new SwitchNode<>(null, input, (cv, v) -> cv.matches(v));
 	}
 
 }
