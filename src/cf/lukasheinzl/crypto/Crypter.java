@@ -14,10 +14,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-import cf.lukasheinzl.crypto.key.Key;
-
 /**
- * Used to encrypt/decrypt byte[] using {@link cf.lukasheinzl.crypto.key.Key Keys}
+ * Used to encrypt/decrypt byte[] using {@link cf.lukasheinzl.crypto.Key Keys}
  * 
  * @author Lukas Heinzl
  *
@@ -36,7 +34,7 @@ public class Crypter{
 	 * @param how
 	 *            The name of the encryption algorithm to use
 	 * @param key
-	 *            The {@link cf.lukasheinzl.crypto.key.Key Key} to use for the encryption
+	 *            The {@link cf.lukasheinzl.crypto.Key Key} to use for the encryption
 	 * @return The byte[] containing the encrypted data
 	 * @throws CryptoException
 	 *             If the encryption algorithm could not be found or the encryption failed
@@ -64,7 +62,7 @@ public class Crypter{
 	 * @param how
 	 *            The name of the encryption algorithm to use
 	 * @param key
-	 *            The {@link cf.lukasheinzl.crypto.key.Key Key} to use for the encryption
+	 *            The {@link cf.lukasheinzl.crypto.Key Key} to use for the encryption
 	 * @return The byte[] containing the decrypted data
 	 * @throws CryptoException
 	 *             If the decryption algorithm could not be found or the decryption failed
