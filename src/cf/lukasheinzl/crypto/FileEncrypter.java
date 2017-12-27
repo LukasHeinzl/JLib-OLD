@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import cf.lukasheinzl.crypto.key.Key;
-
 /**
- * Used to encrypt/decrypt Files using {@link cf.lukasheinzl.crypto.key.Key Keys}
+ * Used to encrypt/decrypt Files using {@link cf.lukasheinzl.crypto.Key Keys}
  * 
  * @author Lukas Heinzl
  *
@@ -26,7 +24,7 @@ public class FileEncrypter{
 	 * @param algorithm
 	 *            The name of the encryption algorithm to use
 	 * @param key
-	 *            The {@link cf.lukasheinzl.crypto.key.Key Key} to use for the encryption
+	 *            The {@link cf.lukasheinzl.crypto.Key Key} to use for the encryption
 	 * @param write
 	 *            If this boolean is set to true the encrypted bytes will be written to the file
 	 * @return A byte[] containing the encrypted data
@@ -56,7 +54,7 @@ public class FileEncrypter{
 	 * @param algorithm
 	 *            The name of the decryption algorithm to use
 	 * @param key
-	 *            The {@link cf.lukasheinzl.crypto.key.Key Key} to use for the decryption
+	 *            The {@link cf.lukasheinzl.crypto.Key Key} to use for the decryption
 	 * @param write
 	 *            If this boolean is set to true the decrypted bytes will be written to the file
 	 * @return A byte[] containing the decrypted data
